@@ -1,0 +1,29 @@
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+
+    --success-color: #16a34a;
+    --warning-color: #d97706;
+    --danger-color: #dc2626;
+
+    --sidebar-bg: #0f172a;
+    --sidebar-hover: #1e293b;
+
+    --navbar-bg: #ffffff;
+
+    --background-color: #f8fafc;
+    --card-bg: #ffffff;
+
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --text-light: #94a3b8;
+
+    --border-color: #e2e8f0;
+
+    --sidebar-width: 250px;
+    --navbar-height: 70px;
+
+    --border-radius: 10px;
+
+    --transition: 0.2s ease;
+}

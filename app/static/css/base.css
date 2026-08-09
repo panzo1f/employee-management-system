@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding-top: var(--navbar-height);
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+.page-content {
+    padding: 30px;
+}

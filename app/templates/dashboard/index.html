@@ -1,0 +1,180 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+Dashboard | NovaHR
+{% endblock %}
+
+
+{% block content %}
+
+<div class="main-content">
+
+    <div class="page-content">
+
+        <!-- Dashboard Header -->
+
+        <div class="dashboard-header">
+
+            <h1 class="dashboard-title">
+                Dashboard
+            </h1>
+
+            <p class="dashboard-subtitle">
+                Bem-vindo ao NovaHR. Aqui está o resumo da sua organização.
+            </p>
+
+        </div>
+
+
+        <!-- Metrics -->
+
+        <div class="metrics-grid">
+
+
+            <!-- Employees -->
+
+            <div class="metric-card">
+
+                <div class="metric-card-top">
+
+                    <div class="metric-icon blue">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+
+                </div>
+
+                <p class="metric-label">
+                    Funcionários
+                </p>
+
+                <div class="metric-value">
+                    128
+                </div>
+
+                <div class="metric-footer">
+
+                    <span class="metric-positive">
+                        +8
+                    </span>
+
+                    <span class="metric-neutral">
+                        este mês
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Departments -->
+
+            <div class="metric-card">
+
+                <div class="metric-card-top">
+
+                    <div class="metric-icon green">
+                        <i class="bi bi-diagram-3-fill"></i>
+                    </div>
+
+                </div>
+
+                <p class="metric-label">
+                    Departamentos
+                </p>
+
+                <div class="metric-value">
+                    8
+                </div>
+
+                <div class="metric-footer">
+
+                    <span class="metric-positive">
+                        +1
+                    </span>
+
+                    <span class="metric-neutral">
+                        este mês
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Users -->
+
+            <div class="metric-card">
+
+                <div class="metric-card-top">
+
+                    <div class="metric-icon orange">
+                        <i class="bi bi-person-badge-fill"></i>
+                    </div>
+
+                </div>
+
+                <p class="metric-label">
+                    Usuários
+                </p>
+
+                <div class="metric-value">
+                    12
+                </div>
+
+                <div class="metric-footer">
+
+                    <span class="metric-positive">
+                        +2
+                    </span>
+
+                    <span class="metric-neutral">
+                        este mês
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Active Employees -->
+
+            <div class="metric-card">
+
+                <div class="metric-card-top">
+
+                    <div class="metric-icon purple">
+                        <i class="bi bi-person-check-fill"></i>
+                    </div>
+
+                </div>
+
+                <p class="metric-label">
+                    Funcionários Ativos
+                </p>
+
+                <div class="metric-value">
+                    115
+                </div>
+
+                <div class="metric-footer">
+
+                    <span class="metric-positive">
+                        89.8%
+                    </span>
+
+                    <span class="metric-neutral">
+                        do total
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

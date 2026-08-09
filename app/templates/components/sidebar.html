@@ -1,0 +1,154 @@
+<aside class="sidebar" id="sidebar">
+
+    <!-- Logo -->
+
+    <div class="sidebar-header">
+
+        <a href="{{ url_for('dashboard.index') }}" class="brand">
+
+            <div class="brand-icon">
+                <i class="bi bi-buildings"></i>
+            </div>
+
+            <div class="brand-text">
+
+                <span class="brand-name">
+                    NovaHR
+                </span>
+
+                <span class="brand-subtitle">
+                    Employee Platform
+                </span>
+
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- Navigation -->
+
+    <nav class="sidebar-nav">
+
+        <div class="nav-section">
+
+            <span class="nav-section-title">
+                PRINCIPAL
+            </span>
+
+            <a
+                href="{{ url_for('dashboard.index') }}"
+                class="nav-link active"
+            >
+
+                <i class="bi bi-grid-1x2-fill"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="#" class="nav-link">
+
+                <i class="bi bi-people-fill"></i>
+
+                <span>
+                    Funcionários
+                </span>
+
+            </a>
+
+
+            <a href="#" class="nav-link">
+
+                <i class="bi bi-diagram-3-fill"></i>
+
+                <span>
+                    Departamentos
+                </span>
+
+            </a>
+
+
+            <a href="#" class="nav-link">
+
+                <i class="bi bi-person-badge-fill"></i>
+
+                <span>
+                    Usuários
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="nav-section">
+
+            <span class="nav-section-title">
+                SISTEMA
+            </span>
+
+
+            <a href="#" class="nav-link">
+
+                <i class="bi bi-bar-chart-fill"></i>
+
+                <span>
+                    Relatórios
+                </span>
+
+            </a>
+
+
+            <a href="#" class="nav-link">
+
+                <i class="bi bi-gear-fill"></i>
+
+                <span>
+                    Configurações
+                </span>
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- User -->
+
+    <div class="sidebar-footer">
+
+        <div class="user-card">
+
+            <div class="user-avatar">
+                <i class="bi bi-person-fill"></i>
+            </div>
+
+            <div class="user-info">
+
+                <span class="user-name">
+                    Pedro
+                </span>
+
+                <span class="user-role">
+                    Administrador
+                </span>
+
+            </div>
+
+            <button class="user-menu">
+
+                <i class="bi bi-three-dots-vertical"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</aside>
