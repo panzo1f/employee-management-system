@@ -37,9 +37,12 @@
                 PRINCIPAL
             </span>
 
+
+            <!-- Dashboard -->
+
             <a
                 href="{{ url_for('dashboard.index') }}"
-                class="nav-link active"
+                class="nav-link {% if request.endpoint == 'dashboard.index' %}active{% endif %}"
             >
 
                 <i class="bi bi-grid-1x2-fill"></i>
@@ -50,6 +53,8 @@
 
             </a>
 
+
+            <!-- Funcionários -->
 
             <a href="#" class="nav-link">
 
@@ -62,7 +67,12 @@
             </a>
 
 
-            <a href="#" class="nav-link">
+            <!-- Departamentos -->
+
+            <a
+                href="{{ url_for('departments.list_departments') }}"
+                class="nav-link {% if request.endpoint in ['departments.list_departments', 'departments.create_department'] %}active{% endif %}"
+            >
 
                 <i class="bi bi-diagram-3-fill"></i>
 
@@ -72,6 +82,8 @@
 
             </a>
 
+
+            <!-- Usuários -->
 
             <a href="#" class="nav-link">
 
@@ -93,6 +105,8 @@
             </span>
 
 
+            <!-- Relatórios -->
+
             <a href="#" class="nav-link">
 
                 <i class="bi bi-bar-chart-fill"></i>
@@ -103,6 +117,8 @@
 
             </a>
 
+
+            <!-- Configurações -->
 
             <a href="#" class="nav-link">
 
@@ -141,7 +157,7 @@
 
             </div>
 
-            <button class="user-menu">
+            <button class="user-menu" type="button">
 
                 <i class="bi bi-three-dots-vertical"></i>
 

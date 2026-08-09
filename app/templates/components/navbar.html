@@ -16,7 +16,15 @@
         <div class="breadcrumb-area">
 
             <span class="breadcrumb-current">
-                Dashboard
+                {% if request.endpoint == 'departments.list_departments' %}
+                    Departamentos
+                {% elif request.endpoint == 'departments.create_department' %}
+                    Novo Departamento
+                {% elif request.endpoint == 'dashboard.index' %}
+                    Dashboard
+                {% else %}
+                    NovaHR
+                {% endif %}
             </span>
 
         </div>

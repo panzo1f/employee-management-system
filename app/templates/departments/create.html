@@ -1,33 +1,164 @@
 {% extends "layouts/base.html" %}
 
+{% block title %}
+Novo Departamento | NovaHR
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/departments.css') }}"
+>
+{% endblock %}
+
 {% block content %}
-<div class="container">
-    <h1>Novo Departamento</h1>
 
-    <form method="POST">
-        <div>
-            <label for="name">Nome</label>
-            <input
-                type="text"
-                id="name"
-                name="name"
-                required
-            >
-        </div>
+<div class="page-content">
+
+    <div class="department-header">
 
         <div>
-            <label for="description">Descrição</label>
-            <textarea
-                id="description"
-                name="description"
-                rows="4"
-            ></textarea>
+            <h1 class="department-title">
+                Novo Departamento
+            </h1>
+
+            <p class="department-subtitle">
+                Cadastre um novo departamento na organização.
+            </p>
         </div>
 
-        <button type="submit">Criar Departamento</button>
-        <a href="{{ url_for('departments.list_departments') }}">
-            Cancelar
+        <a
+            href="{{ url_for('departments.list_departments') }}"
+            class="btn btn-outline-secondary"
+        >
+            <i class="bi bi-arrow-left me-1"></i>
+            Voltar
         </a>
-    </form>
+
+    </div>
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            {% for category, message in messages %}
+
+                <div
+                    class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show"
+                    role="alert"
+                >
+                    {{ message }}
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Fechar"
+                    ></button>
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+
+    <div class="department-card">
+
+        <div class="department-card-header">
+
+            <div class="department-card-icon">
+                <i class="bi bi-diagram-3"></i>
+            </div>
+
+            <div>
+                <h2 class="department-card-title">
+                    Informações do departamento
+                </h2>
+
+                <p class="department-card-description">
+                    Preencha os dados abaixo para criar o departamento.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="department-card-body">
+
+            <form method="POST">
+
+                <div class="mb-4">
+
+                    <label
+                        for="name"
+                        class="form-label"
+                    >
+                        Nome do departamento
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        name="name"
+                        value="{{ name or '' }}"
+                        placeholder="Ex.: Recursos Humanos"
+                        required
+                        autofocus
+                    >
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label
+                        for="description"
+                        class="form-label"
+                    >
+                        Descrição
+                    </label>
+
+                    <textarea
+                        class="form-control"
+                        id="description"
+                        name="description"
+                        rows="5"
+                        placeholder="Descreva a função deste departamento..."
+                    >{{ description or '' }}</textarea>
+
+                </div>
+
+
+                <div class="department-form-actions">
+
+                    <a
+                        href="{{ url_for('departments.list_departments') }}"
+                        class="btn btn-light"
+                    >
+                        Cancelar
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        <i class="bi bi-check-lg me-1"></i>
+                        Criar Departamento
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
 </div>
+
 {% endblock %}
