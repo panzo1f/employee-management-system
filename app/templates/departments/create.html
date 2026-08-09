@@ -1,0 +1,33 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Novo Departamento</h1>
+
+    <form method="POST">
+        <div>
+            <label for="name">Nome</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                required
+            >
+        </div>
+
+        <div>
+            <label for="description">Descrição</label>
+            <textarea
+                id="description"
+                name="description"
+                rows="4"
+            ></textarea>
+        </div>
+
+        <button type="submit">Criar Departamento</button>
+        <a href="{{ url_for('departments.list_departments') }}">
+            Cancelar
+        </a>
+    </form>
+</div>
+{% endblock %}
