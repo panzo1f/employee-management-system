@@ -1,10 +1,6 @@
-# app/extensions.py
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
-# Aqui registraremos todas as extensões da aplicação.
-# Exemplos:
-# - SQLAlchemy
-# - Flask-Migrate
-# - Flask-Login
-# - Flask-WTF
 
-# Nesta primeira etapa ele permanece vazio.
+db = SQLAlchemy()
+migrate = Migrate()
