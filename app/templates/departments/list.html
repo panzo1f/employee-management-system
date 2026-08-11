@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 
 {% block title %}
-Departamentos | NovaHR
+Departments | NovaHR
 {% endblock %}
 
 {% block content %}
@@ -11,10 +11,10 @@ Departamentos | NovaHR
     <div class="d-flex justify-content-between align-items-center mb-4">
 
         <div>
-            <h1 class="h3 mb-1">Departamentos</h1>
+            <h1 class="h3 mb-1">Departments</h1>
 
             <p class="text-muted mb-0">
-                Gestão dos departamentos da organização.
+                Manage your organization's departments.
             </p>
         </div>
 
@@ -23,10 +23,11 @@ Departamentos | NovaHR
             class="btn btn-primary"
         >
             <i class="bi bi-plus-lg me-1"></i>
-            Novo Departamento
+            New Department
         </a>
 
     </div>
+
 
     {% with messages = get_flashed_messages(with_categories=true) %}
 
@@ -44,7 +45,7 @@ Departamentos | NovaHR
                         type="button"
                         class="btn-close"
                         data-bs-dismiss="alert"
-                        aria-label="Fechar"
+                        aria-label="Close"
                     ></button>
                 </div>
 
@@ -53,6 +54,7 @@ Departamentos | NovaHR
         {% endif %}
 
     {% endwith %}
+
 
     <div class="card shadow-sm border-0">
 
@@ -67,9 +69,9 @@ Departamentos | NovaHR
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nome</th>
-                                <th>Descrição</th>
-                                <th class="text-end">Ações</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th class="text-end">Actions</th>
                             </tr>
                         </thead>
 
@@ -90,26 +92,40 @@ Departamentos | NovaHR
                                     </td>
 
                                     <td>
-                                        {{ department.description or 'Sem descrição' }}
+                                        {{ department.description or 'No description' }}
                                     </td>
 
                                     <td class="text-end">
 
+                                        <!-- Edit -->
+
                                         <a
                                             href="{{ url_for('departments.edit_department', department_id=department.id) }}"
                                             class="btn btn-sm btn-outline-secondary"
-                                            title="Editar"
+                                            title="Edit"
                                         >
                                             <i class="bi bi-pencil"></i>
                                         </a>
 
-                                        <a
-                                            href="#"
-                                            class="btn btn-sm btn-outline-danger"
-                                            title="Eliminar"
+
+                                        <!-- Delete -->
+
+                                        <form
+                                            method="POST"
+                                            action="{{ url_for('departments.delete_department', department_id=department.id) }}"
+                                            class="d-inline"
+                                            onsubmit="return confirm('Are you sure you want to delete this department?');"
                                         >
-                                            <i class="bi bi-trash"></i>
-                                        </a>
+
+                                            <button
+                                                type="submit"
+                                                class="btn btn-sm btn-outline-danger"
+                                                title="Delete"
+                                            >
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+
+                                        </form>
 
                                     </td>
 
@@ -132,11 +148,11 @@ Departamentos | NovaHR
                     </div>
 
                     <h5>
-                        Nenhum departamento encontrado
+                        No departments found
                     </h5>
 
                     <p class="text-muted">
-                        Ainda não existem departamentos cadastrados.
+                        There are no departments registered yet.
                     </p>
 
                     <a
@@ -144,7 +160,7 @@ Departamentos | NovaHR
                         class="btn btn-primary"
                     >
                         <i class="bi bi-plus-lg me-1"></i>
-                        Criar primeiro departamento
+                        Create First Department
                     </a>
 
                 </div>
@@ -157,6 +173,4 @@ Departamentos | NovaHR
 
 </div>
 
-{% endblock %}
-
-
+{% endblock %} 

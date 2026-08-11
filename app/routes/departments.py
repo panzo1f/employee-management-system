@@ -93,3 +93,24 @@ def edit_department(department_id):
         "departments/edit.html",
         department=department,
     )
+@departments_bp.route(
+    "/<int:department_id>/delete",
+    methods=["POST"],
+)
+def delete_department(department_id):
+    department = DepartmentService.get_by_id(department_id)
+
+    if department is None:
+        flash("Department not found.", "error")
+
+        return redirect(
+            url_for("departments.list_departments")
+        )
+
+    DepartmentService.delete(department)
+
+    flash("Department deleted successfully.", "success")
+
+    return redirect(
+        url_for("departments.list_departments")
+    )
