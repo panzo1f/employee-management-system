@@ -21,10 +21,14 @@ button {
 .main-content {
     margin-left: var(--sidebar-width);
     padding-top: var(--navbar-height);
+    width: calc(100% - var(--sidebar-width));
     min-height: 100vh;
     transition: var(--transition);
 }
 
 .page-content {
-    padding: 30px;
+    width: 100%;
+    max-width: none;
+    padding: 30px 40px;
 }
+

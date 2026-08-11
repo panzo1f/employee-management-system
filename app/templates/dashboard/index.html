@@ -4,453 +4,447 @@
 Dashboard | NovaHR
 {% endblock %}
 
-
 {% block content %}
 
-<div class="main-content">
+<div class="page-content">
 
-    <div class="page-content">
+    <!-- ============================= -->
+    <!-- DASHBOARD HEADER               -->
+    <!-- ============================= -->
 
-        <!-- ============================= -->
-        <!-- DASHBOARD HEADER               -->
-        <!-- ============================= -->
+    <div class="dashboard-header">
 
-        <div class="dashboard-header">
+        <h1 class="dashboard-title">
+            Dashboard
+        </h1>
 
-            <h1 class="dashboard-title">
-                Dashboard
-            </h1>
+        <p class="dashboard-subtitle">
+            Bem-vindo ao NovaHR. Aqui está o resumo da sua organização.
+        </p>
 
-            <p class="dashboard-subtitle">
-                Bem-vindo ao NovaHR. Aqui está o resumo da sua organização.
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- METRICS                       -->
+    <!-- ============================= -->
+
+    <div class="metrics-grid">
+
+
+        <!-- Funcionários -->
+
+        <div class="metric-card">
+
+            <div class="metric-card-top">
+
+                <div class="metric-icon blue">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+
+            </div>
+
+            <p class="metric-label">
+                Funcionários
             </p>
 
-        </div>
-
-
-        <!-- ============================= -->
-        <!-- METRICS                       -->
-        <!-- ============================= -->
-
-        <div class="metrics-grid">
-
-
-            <!-- Funcionários -->
-
-            <div class="metric-card">
-
-                <div class="metric-card-top">
-
-                    <div class="metric-icon blue">
-                        <i class="bi bi-people-fill"></i>
-                    </div>
-
-                </div>
-
-                <p class="metric-label">
-                    Funcionários
-                </p>
-
-                <div class="metric-value">
-                    128
-                </div>
-
-                <div class="metric-footer">
-
-                    <span class="metric-positive">
-                        +8
-                    </span>
-
-                    <span class="metric-neutral">
-                        este mês
-                    </span>
-
-                </div>
-
+            <div class="metric-value">
+                128
             </div>
 
+            <div class="metric-footer">
 
-            <!-- Departamentos -->
+                <span class="metric-positive">
+                    +8
+                </span>
 
-            <div class="metric-card">
-
-                <div class="metric-card-top">
-
-                    <div class="metric-icon green">
-                        <i class="bi bi-diagram-3-fill"></i>
-                    </div>
-
-                </div>
-
-                <p class="metric-label">
-                    Departamentos
-                </p>
-
-                <div class="metric-value">
-                    8
-                </div>
-
-                <div class="metric-footer">
-
-                    <span class="metric-positive">
-                        +1
-                    </span>
-
-                    <span class="metric-neutral">
-                        este mês
-                    </span>
-
-                </div>
+                <span class="metric-neutral">
+                    este mês
+                </span>
 
             </div>
-
-
-            <!-- Usuários -->
-
-            <div class="metric-card">
-
-                <div class="metric-card-top">
-
-                    <div class="metric-icon orange">
-                        <i class="bi bi-person-badge-fill"></i>
-                    </div>
-
-                </div>
-
-                <p class="metric-label">
-                    Usuários
-                </p>
-
-                <div class="metric-value">
-                    12
-                </div>
-
-                <div class="metric-footer">
-
-                    <span class="metric-positive">
-                        +2
-                    </span>
-
-                    <span class="metric-neutral">
-                        este mês
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- Funcionários Ativos -->
-
-            <div class="metric-card">
-
-                <div class="metric-card-top">
-
-                    <div class="metric-icon purple">
-                        <i class="bi bi-person-check-fill"></i>
-                    </div>
-
-                </div>
-
-                <p class="metric-label">
-                    Funcionários Ativos
-                </p>
-
-                <div class="metric-value">
-                    115
-                </div>
-
-                <div class="metric-footer">
-
-                    <span class="metric-positive">
-                        89.8%
-                    </span>
-
-                    <span class="metric-neutral">
-                        do total
-                    </span>
-
-                </div>
-
-            </div>
-
 
         </div>
 
 
-        <!-- ============================= -->
-        <!-- DASHBOARD LOWER SECTION        -->
-        <!-- ============================= -->
+        <!-- Departamentos -->
 
-        <div class="dashboard-grid">
+        <div class="metric-card">
 
+            <div class="metric-card-top">
 
-            <!-- ============================= -->
-            <!-- ÚLTIMOS FUNCIONÁRIOS           -->
-            <!-- ============================= -->
-
-            <div class="dashboard-panel">
-
-                <div class="dashboard-panel-header">
-
-                    <h2 class="dashboard-panel-title">
-                        Últimos funcionários
-                    </h2>
-
-                    <a href="#" class="dashboard-panel-link">
-                        Ver todos →
-                    </a>
-
-                </div>
-
-
-                <div class="employee-table-wrapper">
-
-                    <table class="employee-table">
-
-                        <thead>
-
-                            <tr>
-
-                                <th>
-                                    Funcionário
-                                </th>
-
-                                <th>
-                                    Departamento
-                                </th>
-
-                                <th>
-                                    Cargo
-                                </th>
-
-                                <th>
-                                    Status
-                                </th>
-
-                            </tr>
-
-                        </thead>
-
-
-                        <tbody>
-
-
-                            <!-- João Silva -->
-
-                            <tr>
-
-                                <td>
-
-                                    <div class="employee-name">
-
-                                        <div class="employee-avatar">
-                                            JS
-                                        </div>
-
-                                        <div class="employee-info">
-
-                                            <span class="employee-full-name">
-                                                João Silva
-                                            </span>
-
-                                            <span class="employee-email">
-                                                joao.silva@novahr.com
-                                            </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-                                <td>
-                                    Tecnologia
-                                </td>
-
-                                <td>
-                                    Software Engineer
-                                </td>
-
-                                <td>
-
-                                    <span class="status-badge status-active">
-                                        Ativo
-                                    </span>
-
-                                </td>
-
-                            </tr>
-
-
-                            <!-- Maria Santos -->
-
-                            <tr>
-
-                                <td>
-
-                                    <div class="employee-name">
-
-                                        <div class="employee-avatar">
-                                            MS
-                                        </div>
-
-                                        <div class="employee-info">
-
-                                            <span class="employee-full-name">
-                                                Maria Santos
-                                            </span>
-
-                                            <span class="employee-email">
-                                                maria.santos@novahr.com
-                                            </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-                                <td>
-                                    Recursos Humanos
-                                </td>
-
-                                <td>
-                                    HR Specialist
-                                </td>
-
-                                <td>
-
-                                    <span class="status-badge status-active">
-                                        Ativo
-                                    </span>
-
-                                </td>
-
-                            </tr>
-
-
-                            <!-- Carlos Manuel -->
-
-                            <tr>
-
-                                <td>
-
-                                    <div class="employee-name">
-
-                                        <div class="employee-avatar">
-                                            CM
-                                        </div>
-
-                                        <div class="employee-info">
-
-                                            <span class="employee-full-name">
-                                                Carlos Manuel
-                                            </span>
-
-                                            <span class="employee-email">
-                                                carlos.manuel@novahr.com
-                                            </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-                                <td>
-                                    Financeiro
-                                </td>
-
-                                <td>
-                                    Financial Analyst
-                                </td>
-
-                                <td>
-
-                                    <span class="status-badge status-vacation">
-                                        Férias
-                                    </span>
-
-                                </td>
-
-                            </tr>
-
-
-                            <!-- Ana Costa -->
-
-                            <tr>
-
-                                <td>
-
-                                    <div class="employee-name">
-
-                                        <div class="employee-avatar">
-                                            AC
-                                        </div>
-
-                                        <div class="employee-info">
-
-                                            <span class="employee-full-name">
-                                                Ana Costa
-                                            </span>
-
-                                            <span class="employee-email">
-                                                ana.costa@novahr.com
-                                            </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-                                <td>
-                                    Marketing
-                                </td>
-
-                                <td>
-                                    Marketing Manager
-                                </td>
-
-                                <td>
-
-                                    <span class="status-badge status-active">
-                                        Ativo
-                                    </span>
-
-                                </td>
-
-                            </tr>
-
-
-                        </tbody>
-
-                    </table>
-
+                <div class="metric-icon green">
+                    <i class="bi bi-diagram-3-fill"></i>
                 </div>
 
             </div>
 
+            <p class="metric-label">
+                Departamentos
+            </p>
 
-            <!-- ============================= -->
-            <!-- ATIVIDADE RECENTE             -->
-            <!-- ============================= -->
-
-            <div class="dashboard-panel">
-
-                <div class="dashboard-panel-header">
-
-                    <h2 class="dashboard-panel-title">
-                        Atividade recente
-                    </h2>
-
-                </div>
-
+            <div class="metric-value">
+                8
             </div>
 
+            <div class="metric-footer">
+
+                <span class="metric-positive">
+                    +1
+                </span>
+
+                <span class="metric-neutral">
+                    este mês
+                </span>
+
+            </div>
 
         </div>
+
+
+        <!-- Usuários -->
+
+        <div class="metric-card">
+
+            <div class="metric-card-top">
+
+                <div class="metric-icon orange">
+                    <i class="bi bi-person-badge-fill"></i>
+                </div>
+
+            </div>
+
+            <p class="metric-label">
+                Usuários
+            </p>
+
+            <div class="metric-value">
+                12
+            </div>
+
+            <div class="metric-footer">
+
+                <span class="metric-positive">
+                    +2
+                </span>
+
+                <span class="metric-neutral">
+                    este mês
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Funcionários Ativos -->
+
+        <div class="metric-card">
+
+            <div class="metric-card-top">
+
+                <div class="metric-icon purple">
+                    <i class="bi bi-person-check-fill"></i>
+                </div>
+
+            </div>
+
+            <p class="metric-label">
+                Funcionários Ativos
+            </p>
+
+            <div class="metric-value">
+                115
+            </div>
+
+            <div class="metric-footer">
+
+                <span class="metric-positive">
+                    89.8%
+                </span>
+
+                <span class="metric-neutral">
+                    do total
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- DASHBOARD LOWER SECTION        -->
+    <!-- ============================= -->
+
+    <div class="dashboard-grid">
+
+
+        <!-- ============================= -->
+        <!-- ÚLTIMOS FUNCIONÁRIOS           -->
+        <!-- ============================= -->
+
+        <div class="dashboard-panel">
+
+            <div class="dashboard-panel-header">
+
+                <h2 class="dashboard-panel-title">
+                    Últimos funcionários
+                </h2>
+
+                <a href="#" class="dashboard-panel-link">
+                    Ver todos →
+                </a>
+
+            </div>
+
+
+            <div class="employee-table-wrapper">
+
+                <table class="employee-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Funcionário
+                            </th>
+
+                            <th>
+                                Departamento
+                            </th>
+
+                            <th>
+                                Cargo
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <!-- João Silva -->
+
+                        <tr>
+
+                            <td>
+
+                                <div class="employee-name">
+
+                                    <div class="employee-avatar">
+                                        JS
+                                    </div>
+
+                                    <div class="employee-info">
+
+                                        <span class="employee-full-name">
+                                            João Silva
+                                        </span>
+
+                                        <span class="employee-email">
+                                            joao.silva@novahr.com
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Tecnologia
+                            </td>
+
+                            <td>
+                                Software Engineer
+                            </td>
+
+                            <td>
+
+                                <span class="status-badge status-active">
+                                    Ativo
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Maria Santos -->
+
+                        <tr>
+
+                            <td>
+
+                                <div class="employee-name">
+
+                                    <div class="employee-avatar">
+                                        MS
+                                    </div>
+
+                                    <div class="employee-info">
+
+                                        <span class="employee-full-name">
+                                            Maria Santos
+                                        </span>
+
+                                        <span class="employee-email">
+                                            maria.santos@novahr.com
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Recursos Humanos
+                            </td>
+
+                            <td>
+                                HR Specialist
+                            </td>
+
+                            <td>
+
+                                <span class="status-badge status-active">
+                                    Ativo
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Carlos Manuel -->
+
+                        <tr>
+
+                            <td>
+
+                                <div class="employee-name">
+
+                                    <div class="employee-avatar">
+                                        CM
+                                    </div>
+
+                                    <div class="employee-info">
+
+                                        <span class="employee-full-name">
+                                            Carlos Manuel
+                                        </span>
+
+                                        <span class="employee-email">
+                                            carlos.manuel@novahr.com
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Financeiro
+                            </td>
+
+                            <td>
+                                Financial Analyst
+                            </td>
+
+                            <td>
+
+                                <span class="status-badge status-vacation">
+                                    Férias
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Ana Costa -->
+
+                        <tr>
+
+                            <td>
+
+                                <div class="employee-name">
+
+                                    <div class="employee-avatar">
+                                        AC
+                                    </div>
+
+                                    <div class="employee-info">
+
+                                        <span class="employee-full-name">
+                                            Ana Costa
+                                        </span>
+
+                                        <span class="employee-email">
+                                            ana.costa@novahr.com
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Marketing
+                            </td>
+
+                            <td>
+                                Marketing Manager
+                            </td>
+
+                            <td>
+
+                                <span class="status-badge status-active">
+                                    Ativo
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- ATIVIDADE RECENTE              -->
+        <!-- ============================= -->
+
+        <div class="dashboard-panel">
+
+            <div class="dashboard-panel-header">
+
+                <h2 class="dashboard-panel-title">
+                    Atividade recente
+                </h2>
+
+            </div>
+
+        </div>
+
 
     </div>
 
