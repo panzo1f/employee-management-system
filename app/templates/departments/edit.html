@@ -1,0 +1,178 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+Editar Departamento | NovaHR
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block content %}
+
+<div class="page-content">
+
+    <!-- ============================= -->
+    <!-- DEPARTMENT HEADER              -->
+    <!-- ============================= -->
+
+    <div class="department-header">
+
+        <div>
+
+            <h1 class="department-title">
+                Editar Departamento
+            </h1>
+
+            <p class="department-subtitle">
+                Atualize as informações do departamento.
+            </p>
+
+        </div>
+
+        <a
+            href="{{ url_for('departments.list_departments') }}"
+            class="btn btn-outline-secondary"
+        >
+            <i class="bi bi-arrow-left me-1"></i>
+            Voltar
+        </a>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- FLASH MESSAGES                 -->
+    <!-- ============================= -->
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            {% for category, message in messages %}
+
+                <div
+                    class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show"
+                    role="alert"
+                >
+
+                    {{ message }}
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Fechar"
+                    ></button>
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+
+    <!-- ============================= -->
+    <!-- DEPARTMENT FORM               -->
+    <!-- ============================= -->
+
+    <div class="department-card">
+
+        <div class="department-card-header">
+
+            <div class="department-card-icon">
+                <i class="bi bi-pencil-square"></i>
+            </div>
+
+            <div>
+
+                <h2 class="department-card-title">
+                    Informações do departamento
+                </h2>
+
+                <p class="department-card-description">
+                    Altere os dados abaixo para atualizar o departamento.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="department-card-body">
+
+            <form method="POST">
+
+                <div class="mb-4">
+
+                    <label
+                        for="name"
+                        class="form-label"
+                    >
+                        Nome do departamento
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        name="name"
+                        value="{{ department.name }}"
+                        placeholder="Ex.: Recursos Humanos"
+                        required
+                        autofocus
+                    >
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label
+                        for="description"
+                        class="form-label"
+                    >
+                        Descrição
+                    </label>
+
+                    <textarea
+                        class="form-control"
+                        id="description"
+                        name="description"
+                        rows="5"
+                        placeholder="Descreva a função deste departamento..."
+                    >{{ department.description or '' }}</textarea>
+
+                </div>
+
+
+                <div class="department-form-actions">
+
+                    <a
+                        href="{{ url_for('departments.list_departments') }}"
+                        class="btn btn-light"
+                    >
+                        Cancelar
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        <i class="bi bi-check-lg me-1"></i>
+                        Guardar Alterações
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+

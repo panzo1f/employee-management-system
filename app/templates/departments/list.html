@@ -96,7 +96,7 @@ Departamentos | NovaHR
                                     <td class="text-end">
 
                                         <a
-                                            href="#"
+                                            href="{{ url_for('departments.edit_department', department_id=department.id) }}"
                                             class="btn btn-sm btn-outline-secondary"
                                             title="Editar"
                                         >
