@@ -56,7 +56,11 @@
 
             <!-- Funcionários -->
 
-            <a href="#" class="nav-link">
+            <a
+            href="{{ url_for('employees.list_employees') }}"
+            class="nav-link"
+            {% if request.endpoint in ['employees.list_employees', 'employees.create_employee'] %}active{% endif %}
+            >
 
                 <i class="bi bi-people-fill"></i>
 

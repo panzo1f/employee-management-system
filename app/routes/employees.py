@@ -1,0 +1,103 @@
+from flask import Blueprint, flash, redirect, render_template, request, url_for
+
+from app.services.department_service import DepartmentService
+from app.services.employee_service import EmployeeService
+
+
+employees_bp = Blueprint(
+    "employees",
+    __name__,
+    url_prefix="/employees",
+)
+
+
+@employees_bp.route("/")
+def list_employees():
+    employees = EmployeeService.get_all()
+
+    return render_template(
+        "employees/list.html",
+        employees=employees,
+    )
+
+
+@employees_bp.route("/create", methods=["GET", "POST"])
+def create_employee():
+    departments = DepartmentService.get_all()
+
+    if request.method == "POST":
+        first_name = request.form.get("first_name", "").strip()
+        last_name = request.form.get("last_name", "").strip()
+        email = request.form.get("email", "").strip()
+        phone = request.form.get("phone", "").strip()
+        position = request.form.get("position", "").strip()
+        hire_date = request.form.get("hire_date", "").strip()
+        salary = request.form.get("salary", "").strip()
+        department_id = request.form.get("department_id", "").strip()
+
+        if not first_name or not last_name:
+            flash("First name and last name are required.", "error")
+
+            return render_template(
+                "employees/create.html",
+                departments=departments,
+                form=request.form,
+            )
+
+        if not email:
+            flash("Email is required.", "error")
+
+            return render_template(
+                "employees/create.html",
+                departments=departments,
+                form=request.form,
+            )
+
+        if not position:
+            flash("Position is required.", "error")
+
+            return render_template(
+                "employees/create.html",
+                departments=departments,
+                form=request.form,
+            )
+
+        if not hire_date:
+            flash("Hire date is required.", "error")
+
+            return render_template(
+                "employees/create.html",
+                departments=departments,
+                form=request.form,
+            )
+
+        if not department_id:
+            flash("Department is required.", "error")
+
+            return render_template(
+                "employees/create.html",
+                departments=departments,
+                form=request.form,
+            )
+
+        EmployeeService.create(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            phone=phone or None,
+            position=position,
+            hire_date=hire_date,
+            salary=salary or None,
+            department_id=int(department_id),
+        )
+
+        flash("Employee created successfully.", "success")
+
+        return redirect(
+            url_for("employees.list_employees")
+        )
+
+    return render_template(
+        "employees/create.html",
+        departments=departments,
+    )

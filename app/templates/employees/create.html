@@ -1,0 +1,294 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+Novo Funcionário | NovaHR
+{% endblock %}
+
+{% block content %}
+
+<div class="page-content">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h1 class="h3 mb-1">Novo Funcionário</h1>
+
+            <p class="text-muted mb-0">
+                Cadastre um novo funcionário na organização.
+            </p>
+        </div>
+
+        <a
+            href="{{ url_for('employees.list_employees') }}"
+            class="btn btn-outline-secondary"
+        >
+            <i class="bi bi-arrow-left me-1"></i>
+            Voltar
+        </a>
+
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            {% for category, message in messages %}
+
+                <div
+                    class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show"
+                    role="alert"
+                >
+                    {{ message }}
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Fechar"
+                    ></button>
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <h2 class="h5 mb-1">
+                Informações do funcionário
+            </h2>
+
+            <p class="text-muted mb-0">
+                Preencha os dados abaixo para cadastrar o funcionário.
+            </p>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label
+                            for="first_name"
+                            class="form-label"
+                        >
+                            Nome
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="first_name"
+                            name="first_name"
+                            value="{{ form.get('first_name', '') if form else '' }}"
+                            required
+                            autofocus
+                        >
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label
+                            for="last_name"
+                            class="form-label"
+                        >
+                            Apelido
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="last_name"
+                            name="last_name"
+                            value="{{ form.get('last_name', '') if form else '' }}"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label
+                            for="email"
+                            class="form-label"
+                        >
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                            value="{{ form.get('email', '') if form else '' }}"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label
+                            for="phone"
+                            class="form-label"
+                        >
+                            Telefone
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="phone"
+                            name="phone"
+                            value="{{ form.get('phone', '') if form else '' }}"
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label
+                            for="position"
+                            class="form-label"
+                        >
+                            Cargo
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="position"
+                            name="position"
+                            value="{{ form.get('position', '') if form else '' }}"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label
+                            for="department_id"
+                            class="form-label"
+                        >
+                            Departamento
+                        </label>
+
+                        <select
+                            class="form-select"
+                            id="department_id"
+                            name="department_id"
+                            required
+                        >
+
+                            <option value="">
+                                Selecione um departamento
+                            </option>
+
+                            {% for department in departments %}
+
+                                <option
+                                    value="{{ department.id }}"
+                                    {% if form and form.get('department_id') == department.id|string %}selected{% endif %}
+                                >
+                                    {{ department.name }}
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label
+                            for="hire_date"
+                            class="form-label"
+                        >
+                            Data de contratação
+                        </label>
+
+                        <input
+                            type="date"
+                            class="form-control"
+                            id="hire_date"
+                            name="hire_date"
+                            value="{{ form.get('hire_date', '') if form else '' }}"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label
+                            for="salary"
+                            class="form-label"
+                        >
+                            Salário
+                        </label>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="salary"
+                            name="salary"
+                            value="{{ form.get('salary', '') if form else '' }}"
+                            min="0"
+                            step="0.01"
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+
+                    <a
+                        href="{{ url_for('employees.list_employees') }}"
+                        class="btn btn-light"
+                    >
+                        Cancelar
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        <i class="bi bi-check-lg me-1"></i>
+                        Criar Funcionário
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
