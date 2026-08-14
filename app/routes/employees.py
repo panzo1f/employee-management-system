@@ -101,3 +101,19 @@ def create_employee():
         "employees/create.html",
         departments=departments,
     )
+
+@employees_bp.route("/<int:employee_id>")
+def employee_details(employee_id):
+    employee = EmployeeService.get_by_id(employee_id)
+
+    if employee is None:
+        flash("Employee not found.", "error")
+
+        return redirect(
+            url_for("employees.list_employees")
+        )
+
+    return render_template(
+        "employees/details.html",
+        employee=employee,
+    )

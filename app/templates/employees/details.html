@@ -1,0 +1,158 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+Detalhes do Funcionário | NovaHR
+{% endblock %}
+
+{% block content %}
+
+<div class="page-content">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h1 class="h3 mb-1">Detalhes do Funcionário</h1>
+
+            <p class="text-muted mb-0">
+                Visualize as informações do funcionário.
+            </p>
+        </div>
+
+        <a
+            href="{{ url_for('employees.list_employees') }}"
+            class="btn btn-outline-secondary"
+        >
+            <i class="bi bi-arrow-left me-1"></i>
+            Voltar
+        </a>
+
+    </div>
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-header">
+
+            <h2 class="h5 mb-1">
+                {{ employee.first_name }} {{ employee.last_name }}
+            </h2>
+
+            <p class="text-muted mb-0">
+                {{ employee.position }}
+            </p>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label text-muted">
+                        Nome completo
+                    </label>
+
+                    <div>
+                        {{ employee.first_name }}
+                        {{ employee.last_name }}
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label text-muted">
+                        Email
+                    </label>
+
+                    <div>
+                        {{ employee.email }}
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label text-muted">
+                        Telefone
+                    </label>
+
+                    <div>
+                        {{ employee.phone or 'Não informado' }}
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label text-muted">
+                        Cargo
+                    </label>
+
+                    <div>
+                        {{ employee.position }}
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label text-muted">
+                        Departamento
+                    </label>
+
+                    <div>
+                        {{ employee.department.name }}
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label text-muted">
+                        Data de contratação
+                    </label>
+
+                    <div>
+                        {{ employee.hire_date.strftime('%d/%m/%Y') }}
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label text-muted">
+                        Salário
+                    </label>
+
+                    <div>
+                        {% if employee.salary %}
+                            {{ "%.2f"|format(employee.salary) }}
+                        {% else %}
+                            Não informado
+                        {% endif %}
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <label class="form-label text-muted">
+                        ID do funcionário
+                    </label>
+
+                    <div>
+                        #{{ employee.id }}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
