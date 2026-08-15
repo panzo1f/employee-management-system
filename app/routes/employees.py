@@ -16,11 +16,16 @@ employees_bp = Blueprint(
 
 @employees_bp.route("/")
 def list_employees():
-    employees = EmployeeService.get_all()
+    search = request.args.get("search", "").strip()
+
+    employees = EmployeeService.get_all(
+        search=search
+    )
 
     return render_template(
         "employees/list.html",
         employees=employees,
+        search=search,
     )
 
 

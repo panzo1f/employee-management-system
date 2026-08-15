@@ -7,8 +7,24 @@ from app.models.employee import Employee
 class EmployeeService:
 
     @staticmethod
-    def get_all():
-        return Employee.query.order_by(Employee.id.desc()).all()
+    def get_all(search=None):
+        query = Employee.query
+
+        if search:
+            search = search.strip()
+
+            if search:
+                search_pattern = f"%{search}%"
+
+                query = query.filter(
+                    db.or_(
+                        Employee.first_name.ilike(search_pattern),
+                        Employee.last_name.ilike(search_pattern),
+                        Employee.email.ilike(search_pattern),
+                    )
+                )
+
+        return query.order_by(Employee.id.desc()).all()
 
     @staticmethod
     def get_by_id(employee_id):
