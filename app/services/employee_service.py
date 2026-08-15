@@ -2,6 +2,7 @@ from datetime import date
 
 from app.extensions import db
 from app.models.employee import Employee
+from app.services.activity_service import ActivityService
 
 
 class EmployeeService:
@@ -86,6 +87,11 @@ class EmployeeService:
 
         db.session.add(employee)
         db.session.commit()
+
+        ActivityService.create(
+            "employee_created",
+            f"{employee.first_name} {employee.last_name} foi criado",
+        )
 
         return employee
 

@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 
+from app.services.activity_service import ActivityService
 from app.services.department_service import DepartmentService
 from app.services.employee_service import EmployeeService
 from app.services.user_service import UserService
@@ -14,6 +15,7 @@ def index():
     departments = DepartmentService.get_all()
     statistics = EmployeeService.get_statistics()
     user_statistics = UserService.get_statistics()
+    recent_activities = ActivityService.get_recent(5)
 
     return render_template(
         "dashboard/index.html",
@@ -21,4 +23,5 @@ def index():
         departments=departments,
         statistics=statistics,
         user_statistics=user_statistics,
+        recent_activities=recent_activities,
     )

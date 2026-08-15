@@ -322,6 +322,40 @@ Dashboard | NovaHR
 
             </div>
 
+            <div class="activity-list">
+
+                {% for activity in recent_activities %}
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+
+                        <div class="activity-info">
+
+                            <span class="activity-description">
+                                {{ activity.description }}
+                            </span>
+
+                            <span class="activity-date">
+                                {{ activity.created_at.strftime("%d/%m/%Y %H:%M") }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                {% else %}
+
+                    <div class="activity-empty">
+                        Nenhuma atividade recente.
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
         </div>
 
 

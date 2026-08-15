@@ -230,6 +230,78 @@
 
 
 /* ============================= */
+/* RECENT ACTIVITY               */
+/* ============================= */
+
+.activity-list {
+    padding: 8px 20px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid var(--border-color);
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background-color: var(--background-color);
+    color: var(--primary-color);
+
+    font-size: 15px;
+}
+
+.activity-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    min-width: 0;
+}
+
+.activity-description {
+    font-size: 13px;
+    font-weight: 500;
+
+    color: var(--text-primary);
+}
+
+.activity-date {
+    font-size: 11px;
+
+    color: var(--text-secondary);
+}
+
+.activity-empty {
+    padding: 24px 0;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: var(--text-secondary);
+}
+
+
+/* ============================= */
 /* EMPLOYEE TABLE                */
 /* ============================= */
 
