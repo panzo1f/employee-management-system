@@ -191,3 +191,21 @@ def edit_employee(employee_id):
         employee=employee,
         departments=departments,
     )
+@employees_bp.route("/<int:employee_id>/delete", methods=["POST"])
+def delete_employee(employee_id):
+    employee = EmployeeService.get_by_id(employee_id)
+
+    if employee is None:
+        flash("Employee not found.", "error")
+
+        return redirect(
+            url_for("employees.list_employees")
+        )
+
+    EmployeeService.delete(employee)
+
+    flash("Employee deleted successfully.", "success")
+
+    return redirect(
+        url_for("employees.list_employees")
+    )
