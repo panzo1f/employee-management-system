@@ -182,17 +182,32 @@ def edit_employee(employee_id):
 
         salary = salary or None
 
-        EmployeeService.update(
-            employee=employee,
-            first_name=first_name,
-            last_name=last_name,
-            email=email,
-            phone=phone or None,
-            position=position,
-            hire_date=hire_date,
-            salary=salary,
-            department_id=int(department_id),
-        )
+        try:
+            EmployeeService.update(
+                employee=employee,
+                first_name=first_name,
+                last_name=last_name,
+                email=email,
+                phone=phone or None,
+                position=position,
+                hire_date=hire_date,
+                salary=salary,
+                department_id=int(department_id),
+            )
+
+        except IntegrityError:
+            db.session.rollback()
+
+            flash(
+                "This email is already registered.",
+                "error",
+            )
+
+            return render_template(
+                "employees/edit.html",
+                employee=employee,
+                departments=departments,
+            )
 
         flash("Employee updated successfully.", "success")
 
