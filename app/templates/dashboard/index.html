@@ -119,13 +119,13 @@ Dashboard | NovaHR
             </p>
 
             <div class="metric-value">
-                12
+                {{ user_statistics["total"] }}
             </div>
 
             <div class="metric-footer">
 
                 <span class="metric-positive">
-                    +2
+                    +{{ user_statistics["new_this_month"] }}
                 </span>
 
                 <span class="metric-neutral">
