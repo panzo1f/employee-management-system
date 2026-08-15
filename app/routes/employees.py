@@ -17,15 +17,21 @@ employees_bp = Blueprint(
 @employees_bp.route("/")
 def list_employees():
     search = request.args.get("search", "").strip()
+    status = request.args.get("status", "").strip().lower()
+
+    if status not in ("active", "inactive"):
+        status = ""
 
     employees = EmployeeService.get_all(
-        search=search
+        search=search,
+        status=status,
     )
 
     return render_template(
         "employees/list.html",
         employees=employees,
         search=search,
+        status=status,
     )
 
 

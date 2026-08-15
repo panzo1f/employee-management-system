@@ -7,7 +7,7 @@ from app.models.employee import Employee
 class EmployeeService:
 
     @staticmethod
-    def get_all(search=None):
+    def get_all(search=None, status=None):
         query = Employee.query
 
         if search:
@@ -23,6 +23,12 @@ class EmployeeService:
                         Employee.email.ilike(search_pattern),
                     )
                 )
+
+        if status == "active":
+            query = query.filter(Employee.is_active.is_(True))
+
+        elif status == "inactive":
+            query = query.filter(Employee.is_active.is_(False))
 
         return query.order_by(Employee.id.desc()).all()
 
