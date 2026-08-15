@@ -1,6 +1,8 @@
 from datetime import datetime
 from flask import Blueprint, flash, redirect, render_template, request, url_for
+from sqlalchemy.exc import IntegrityError
 
+from app.extensions import db
 from app.services.department_service import DepartmentService
 from app.services.employee_service import EmployeeService
 
@@ -81,16 +83,31 @@ def create_employee():
                 form=request.form,
             )
 
-        EmployeeService.create(
-            first_name=first_name,
-            last_name=last_name,
-            email=email,
-            phone=phone or None,
-            position=position,
-            hire_date=hire_date,
-            salary=salary or None,
-            department_id=int(department_id),
-        )
+        try:
+            EmployeeService.create(
+                first_name=first_name,
+                last_name=last_name,
+                email=email,
+                phone=phone or None,
+                position=position,
+                hire_date=hire_date,
+                salary=salary or None,
+                department_id=int(department_id),
+            )
+
+        except IntegrityError:
+            db.session.rollback()
+
+            flash(
+                "This email is already registered.",
+                "error",
+            )
+
+            return render_template(
+                "employees/create.html",
+                departments=departments,
+                form=request.form,
+            )
 
         flash("Employee created successfully.", "success")
 
