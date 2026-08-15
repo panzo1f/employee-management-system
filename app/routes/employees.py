@@ -157,6 +157,7 @@ def edit_employee(employee_id):
         hire_date = request.form.get("hire_date", "").strip()
         salary = request.form.get("salary", "").strip()
         department_id = request.form.get("department_id", "").strip()
+        is_active = request.form.get("is_active") == "1"
 
         if not all([
             first_name,
@@ -193,6 +194,7 @@ def edit_employee(employee_id):
                 hire_date=hire_date,
                 salary=salary,
                 department_id=int(department_id),
+                is_active=is_active,
             )
 
         except IntegrityError:

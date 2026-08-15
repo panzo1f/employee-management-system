@@ -78,6 +78,7 @@ class EmployeeService:
         department_id,
         phone=None,
         salary=None,
+        is_active=True,
     ):
         employee.first_name = first_name
         employee.last_name = last_name
@@ -87,6 +88,7 @@ class EmployeeService:
         employee.hire_date = hire_date
         employee.salary = salary
         employee.department_id = department_id
+        employee.is_active = is_active
 
         db.session.commit()
 
