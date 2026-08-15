@@ -2,6 +2,7 @@ from datetime import date
 
 from app.extensions import db
 from app.models.user import User
+from app.services.activity_service import ActivityService
 
 
 class UserService:
@@ -39,5 +40,10 @@ class UserService:
 
         db.session.add(user)
         db.session.commit()
+
+        ActivityService.create(
+            "user_created",
+            f"{user.name} foi criado",
+        )
 
         return user
