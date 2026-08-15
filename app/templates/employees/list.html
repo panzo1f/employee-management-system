@@ -91,6 +91,7 @@ Employees | NovaHR
                                 <th>Email</th>
                                 <th>Position</th>
                                 <th>Department</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -122,6 +123,18 @@ Employees | NovaHR
 
                                     <td>
                                         {{ employee.department.name }}
+                                    </td>
+
+                                    <td>
+                                        {% if employee.is_active %}
+                                            <span class="badge bg-success">
+                                                Active
+                                            </span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">
+                                                Inactive
+                                            </span>
+                                        {% endif %}
                                     </td>
 
                                     <td>
