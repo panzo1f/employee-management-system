@@ -49,13 +49,13 @@ Dashboard | NovaHR
             </p>
 
             <div class="metric-value">
-                128
+                {{ employees|length }}
             </div>
 
             <div class="metric-footer">
 
                 <span class="metric-positive">
-                    +8
+                    +{{ statistics["new_this_month"] }}
                 </span>
 
                 <span class="metric-neutral">
@@ -84,7 +84,7 @@ Dashboard | NovaHR
             </p>
 
             <div class="metric-value">
-                8
+                {{ departments|length }}
             </div>
 
             <div class="metric-footer">
@@ -154,13 +154,13 @@ Dashboard | NovaHR
             </p>
 
             <div class="metric-value">
-                115
+                {{ statistics["active"] }}
             </div>
 
             <div class="metric-footer">
 
                 <span class="metric-positive">
-                    89.8%
+                    {{ "%.0f"|format(statistics["active_percentage"]) }}%
                 </span>
 
                 <span class="metric-neutral">

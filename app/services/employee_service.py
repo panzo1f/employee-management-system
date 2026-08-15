@@ -1,3 +1,5 @@
+from datetime import date
+
 from app.extensions import db
 from app.models.employee import Employee
 
@@ -11,6 +13,32 @@ class EmployeeService:
     @staticmethod
     def get_by_id(employee_id):
         return db.session.get(Employee, employee_id)
+
+    @staticmethod
+    def get_statistics():
+        total = Employee.query.count()
+
+        active = Employee.query.filter_by(is_active=True).count()
+
+        active_percentage = (
+            (active / total) * 100
+            if total > 0
+            else 0
+        )
+
+        today = date.today()
+
+        new_this_month = Employee.query.filter(
+            db.extract("year", Employee.hire_date) == today.year,
+            db.extract("month", Employee.hire_date) == today.month,
+        ).count()
+
+        return {
+            "total": total,
+            "active": active,
+            "active_percentage": active_percentage,
+            "new_this_month": new_this_month,
+        }
 
     @staticmethod
     def create(

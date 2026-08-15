@@ -16,6 +16,12 @@ class Employee(db.Model):
 
     position = db.Column(db.String(100), nullable=False)
 
+    is_active = db.Column(
+        db.Boolean,
+        default=True,
+        nullable=False
+    )
+
     hire_date = db.Column(db.Date, nullable=False)
     salary = db.Column(db.Numeric(12, 2), nullable=True)
 
