@@ -97,6 +97,21 @@ Employees | NovaHR
                                                 Edit
                                             </a>
 
+                                            <form
+                                                method="POST"
+                                                action="{{ url_for('employees.delete_employee', employee_id=employee.id) }}"
+                                                onsubmit="return confirm('Are you sure you want to delete this employee?');"
+                                                class="d-inline"
+                                            >
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-sm btn-outline-danger"
+                                                >
+                                                    <i class="bi bi-trash me-1"></i>
+                                                    Delete
+                                                </button>
+                                            </form>
+
                                         </div>
                                     </td>
 
