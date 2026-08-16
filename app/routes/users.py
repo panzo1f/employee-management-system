@@ -141,3 +141,25 @@ def toggle_user_status(user_id):
     return redirect(
         url_for("users.list_users")
     )
+
+@users_bp.route(
+    "/<int:user_id>/delete",
+    methods=["POST"],
+)
+def delete_user(user_id):
+    user = UserService.get_by_id(user_id)
+
+    if user is None:
+        flash("User not found.", "error")
+
+        return redirect(
+            url_for("users.list_users")
+        )
+
+    UserService.delete(user)
+
+    flash("User deleted successfully.", "success")
+
+    return redirect(
+        url_for("users.list_users")
+    )

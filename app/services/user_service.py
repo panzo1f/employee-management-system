@@ -66,3 +66,15 @@ class UserService:
         )
 
         return user
+
+    @staticmethod
+    def delete(user):
+        user_name = user.name
+
+        db.session.delete(user)
+        db.session.commit()
+
+        ActivityService.create(
+            "user_deleted",
+            f"{user_name} foi eliminado",
+        )
