@@ -329,7 +329,30 @@ Dashboard | NovaHR
                     <div class="activity-item">
 
                         <div class="activity-icon">
-                            <i class="bi bi-clock-history"></i>
+
+                            {% if activity.action == "user_created" %}
+                                <i class="bi bi-person-plus-fill"></i>
+
+                            {% elif activity.action == "user_updated" %}
+                                <i class="bi bi-pencil-fill"></i>
+
+                            {% elif activity.action == "user_status_changed" %}
+                                {% if "ativado" in activity.description %}
+                                    <i class="bi bi-person-check-fill"></i>
+                                {% else %}
+                                    <i class="bi bi-person-x-fill"></i>
+                                {% endif %}
+
+                            {% elif activity.action == "user_deleted" %}
+                                <i class="bi bi-trash-fill"></i>
+
+                            {% elif activity.action == "employee_created" %}
+                                <i class="bi bi-person-plus-fill"></i>
+
+                            {% else %}
+                                <i class="bi bi-clock-history"></i>
+                            {% endif %}
+
                         </div>
 
                         <div class="activity-info">
