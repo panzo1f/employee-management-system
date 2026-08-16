@@ -58,6 +58,10 @@
                             Created
                         </th>
 
+                        <th>
+                            Actions
+                        </th>
+
                     </tr>
 
                 </thead>
@@ -99,13 +103,24 @@
                                 {{ user.created_at.strftime("%d/%m/%Y") }}
                             </td>
 
+                            <td>
+
+                                <a
+                                    href="{{ url_for('users.edit_user', user_id=user.id) }}"
+                                    class="btn btn-sm btn-outline-primary"
+                                >
+                                    Edit
+                                </a>
+
+                            </td>
+
                         </tr>
 
                     {% else %}
 
                         <tr>
 
-                            <td colspan="4" class="text-center">
+                            <td colspan="5" class="text-center">
                                 No users found.
                             </td>
 
