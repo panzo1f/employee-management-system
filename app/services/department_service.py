@@ -9,6 +9,10 @@ class DepartmentService:
         return Department.query.order_by(Department.id.desc()).all()
 
     @staticmethod
+    def get_count():
+        return Department.query.count()
+
+    @staticmethod
     def get_by_id(department_id):
         return db.session.get(Department, department_id)
 

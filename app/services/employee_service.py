@@ -64,6 +64,34 @@ class EmployeeService:
         }
 
     @staticmethod
+    def get_report_statistics():
+        total = Employee.query.count()
+
+        active = Employee.query.filter(
+            Employee.is_active.is_(True)
+        ).count()
+
+        inactive = Employee.query.filter(
+            Employee.is_active.is_(False)
+        ).count()
+
+        salary_data = db.session.query(
+            db.func.avg(Employee.salary),
+            db.func.sum(Employee.salary),
+        ).first()
+
+        average_salary = salary_data[0] or 0
+        total_payroll = salary_data[1] or 0
+
+        return {
+            "total": total,
+            "active": active,
+            "inactive": inactive,
+            "average_salary": average_salary,
+            "total_payroll": total_payroll,
+        }
+
+    @staticmethod
     def create(
         first_name,
         last_name,
