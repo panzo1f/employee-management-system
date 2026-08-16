@@ -89,7 +89,10 @@
 
             <!-- Usuários -->
 
-            <a href="#" class="nav-link">
+            <a
+                href="{{ url_for('users.list_users') }}"
+                class="nav-link {% if request.endpoint == 'users.list_users' %}active{% endif %}"
+            >
 
                 <i class="bi bi-person-badge-fill"></i>
 
