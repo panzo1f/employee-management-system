@@ -105,12 +105,44 @@
 
                             <td>
 
-                                <a
-                                    href="{{ url_for('users.edit_user', user_id=user.id) }}"
-                                    class="btn btn-sm btn-outline-primary"
-                                >
-                                    Edit
-                                </a>
+                                <div class="d-flex gap-2">
+
+                                    <a
+                                        href="{{ url_for('users.edit_user', user_id=user.id) }}"
+                                        class="btn btn-sm btn-outline-primary"
+                                    >
+                                        Edit
+                                    </a>
+
+                                    <form
+                                        method="POST"
+                                        action="{{ url_for('users.toggle_user_status', user_id=user.id) }}"
+                                        class="d-inline"
+                                    >
+
+                                        {% if user.is_active %}
+
+                                            <button
+                                                type="submit"
+                                                class="btn btn-sm btn-outline-danger"
+                                            >
+                                                Deactivate
+                                            </button>
+
+                                        {% else %}
+
+                                            <button
+                                                type="submit"
+                                                class="btn btn-sm btn-outline-success"
+                                            >
+                                                Activate
+                                            </button>
+
+                                        {% endif %}
+
+                                    </form>
+
+                                </div>
 
                             </td>
 

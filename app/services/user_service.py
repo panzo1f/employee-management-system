@@ -53,18 +53,16 @@ class UserService:
         return user
 
     @staticmethod
-    def update(user, name, email, is_active=True):
-        old_name = user.name
-
-        user.name = name
-        user.email = email
-        user.is_active = is_active
+    def toggle_status(user):
+        user.is_active = not user.is_active
 
         db.session.commit()
 
+        status = "ativado" if user.is_active else "desativado"
+
         ActivityService.create(
-            "user_updated",
-            f"{old_name} foi atualizado para {user.name}",
+            "user_status_changed",
+            f"{user.name} foi {status}",
         )
 
         return user

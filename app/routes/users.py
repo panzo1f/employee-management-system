@@ -116,3 +116,28 @@ def edit_user(user_id):
         "users/edit.html",
         user=user,
     )
+
+@users_bp.route(
+    "/<int:user_id>/toggle-status",
+    methods=["POST"],
+)
+def toggle_user_status(user_id):
+    user = UserService.get_by_id(user_id)
+
+    if user is None:
+        flash("User not found.", "error")
+
+        return redirect(
+            url_for("users.list_users")
+        )
+
+    UserService.toggle_status(user)
+
+    if user.is_active:
+        flash("User activated successfully.", "success")
+    else:
+        flash("User deactivated successfully.", "success")
+
+    return redirect(
+        url_for("users.list_users")
+    )
