@@ -3,6 +3,7 @@ from .departments import departments_bp
 from .employees import employees_bp
 from .users import users_bp
 from .reports import reports_bp
+from .settings import settings_bp
 
 
 def register_blueprints(app):
@@ -11,3 +12,4 @@ def register_blueprints(app):
     app.register_blueprint(employees_bp)
     app.register_blueprint(users_bp)
     app.register_blueprint(reports_bp)
+    app.register_blueprint(settings_bp)
