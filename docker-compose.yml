@@ -17,8 +17,25 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  novahr:
+    image: novahr:latest
+    container_name: novahr-app
+
+    restart: unless-stopped
+
+    depends_on:
+      - postgres
+
+    environment:
+      SECRET_KEY: minha-chave-secreta
+      DATABASE_URL: postgresql+psycopg://novahr:novahr_password@postgres:5432/novahr
+
+    ports:
+      - "5000:5000"
+
+    command: flask --app run.py run --host=0.0.0.0 --port=5000
+
 
 volumes:
 
   postgres_data:
-

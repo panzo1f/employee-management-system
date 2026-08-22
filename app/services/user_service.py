@@ -1,5 +1,7 @@
 from datetime import date
 
+from werkzeug.security import generate_password_hash
+
 from app.extensions import db
 from app.models.user import User
 from app.services.activity_service import ActivityService
@@ -35,10 +37,11 @@ class UserService:
         }
 
     @staticmethod
-    def create(name, email, is_active=True):
+    def create(name, email, password, is_active=True):
         user = User(
             name=name,
             email=email,
+            password_hash=generate_password_hash(password),
             is_active=is_active,
         )
 
