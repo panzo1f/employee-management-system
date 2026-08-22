@@ -1,0 +1,313 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}{{ t('preferences') }} - NovaHR{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h1 class="h3 mb-1">{{ t('preferences') }}</h1>
+
+            <p class="text-muted mb-0">
+                {{ t('personalize_novahr') }}
+            </p>
+        </div>
+
+        <a
+            href="{{ url_for('settings.index') }}"
+            class="btn btn-outline-secondary"
+        >
+            <i class="bi bi-arrow-left me-1"></i>
+            {{ t('back') }}
+        </a>
+
+    </div>
+
+
+    {% if preferences %}
+
+    <form
+        method="POST"
+        action="{{ url_for('settings.preferences') }}"
+    >
+
+        <div class="row g-4">
+
+            <div class="col-lg-8">
+
+                <div class="card border-0 shadow-sm">
+
+                    <div class="card-body p-4">
+
+                        <h5 class="mb-4">
+                            <i class="bi bi-sliders me-2"></i>
+                            {{ t('system_preferences') }}
+                        </h5>
+
+
+                        <div class="mb-4">
+
+                            <label
+                                for="theme"
+                                class="form-label fw-semibold"
+                            >
+                                {{ t('theme') }}
+                            </label>
+
+                            <select
+                                id="theme"
+                                name="theme"
+                                class="form-select"
+                            >
+
+                                <option
+                                    value="light"
+                                    {% if preferences.theme == "light" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    {{ t('light') }}
+                                </option>
+
+                                <option
+                                    value="dark"
+                                    {% if preferences.theme == "dark" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    {{ t('dark') }}
+                                </option>
+
+                            </select>
+
+                            <div class="form-text">
+                                {{ t('theme_description') }}
+                            </div>
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label
+                                for="language"
+                                class="form-label fw-semibold"
+                            >
+                                {{ t('language') }}
+                            </label>
+
+                            <select
+                                id="language"
+                                name="language"
+                                class="form-select"
+                            >
+
+                                <option
+                                    value="pt"
+                                    {% if preferences.language == "pt" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    {{ t('portuguese') }}
+                                </option>
+
+                                <option
+                                    value="en"
+                                    {% if preferences.language == "en" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    English
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label
+                                for="items_per_page"
+                                class="form-label fw-semibold"
+                            >
+                                {{ t('items_per_page') }}
+                            </label>
+
+                            <select
+                                id="items_per_page"
+                                name="items_per_page"
+                                class="form-select"
+                            >
+
+                                {% for amount in [10, 25, 50] %}
+
+                                    <option
+                                        value="{{ amount }}"
+                                        {% if preferences.items_per_page == amount %}
+                                            selected
+                                        {% endif %}
+                                    >
+                                        {{ amount }}
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <div class="form-check form-switch">
+
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="notifications_enabled"
+                                    name="notifications_enabled"
+                                    {% if preferences.notifications_enabled %}
+                                        checked
+                                    {% endif %}
+                                >
+
+                                <label
+                                    class="form-check-label fw-semibold"
+                                    for="notifications_enabled"
+                                >
+                                    {{ t('notifications') }}
+                                </label>
+
+                            </div>
+
+                            <div class="form-text">
+                                {{ t('notifications_description') }}
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            <i class="bi bi-check-lg me-1"></i>
+                            {{ t('save_changes') }}
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-4">
+
+                <div class="card border-0 shadow-sm">
+
+                    <div class="card-body p-4">
+
+                        <h5 class="mb-3">
+                            <i class="bi bi-info-circle me-2"></i>
+                            {{ t('preferences_current') }}
+                        </h5>
+
+                        <p class="text-muted">
+                            {{ t('current_settings_description') }}
+                            para a conta.
+                        </p>
+
+
+                        <div class="mb-3">
+
+                            <small class="text-muted d-block">
+                                {{ t('theme') }}
+                            </small>
+
+                            <strong>
+                                {{ preferences.theme|capitalize }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <small class="text-muted d-block">
+                                {{ t('language') }}
+                            </small>
+
+                            <strong>
+                                {% if preferences.language == "pt" %}
+                                    {{ t('portuguese') }}
+                                {% else %}
+                                    English
+                                {% endif %}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <small class="text-muted d-block">
+                                {{ t('items_per_page') }}
+                            </small>
+
+                            <strong>
+                                {{ preferences.items_per_page }}
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <small class="text-muted d-block">
+                                {{ t('notifications') }}
+                            </small>
+
+                            {% if preferences.notifications_enabled %}
+
+                                <span class="text-success">
+                                    <i class="bi bi-check-circle-fill me-1"></i>
+                                    {{ t('enabled_notifications') }}
+                                </span>
+
+                            {% else %}
+
+                                <span class="text-secondary">
+                                    <i class="bi bi-x-circle-fill me-1"></i>
+                                    {{ t('disabled_notifications') }}
+                                </span>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+    {% else %}
+
+    <div class="alert alert-warning">
+        {{ t('no_user_configured') }}
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 
 {% block title %}
-Dashboard | NovaHR
+{{ t('dashboard') }} | NovaHR
 {% endblock %}
 
 {% block content %}
@@ -15,11 +15,11 @@ Dashboard | NovaHR
     <div class="dashboard-header">
 
         <h1 class="dashboard-title">
-            Dashboard
+            {{ t('dashboard') }}
         </h1>
 
         <p class="dashboard-subtitle">
-            Bem-vindo ao NovaHR. Aqui está o resumo da sua organização.
+            {{ t('welcome_dashboard') }}
         </p>
 
     </div>
@@ -45,7 +45,7 @@ Dashboard | NovaHR
             </div>
 
             <p class="metric-label">
-                Funcionários
+                {{ t('employees') }}
             </p>
 
             <div class="metric-value">
@@ -59,7 +59,7 @@ Dashboard | NovaHR
                 </span>
 
                 <span class="metric-neutral">
-                    este mês
+                    {{ t('this_month') }}
                 </span>
 
             </div>
@@ -80,7 +80,7 @@ Dashboard | NovaHR
             </div>
 
             <p class="metric-label">
-                Departamentos
+                {{ t('departments') }}
             </p>
 
             <div class="metric-value">
@@ -94,7 +94,7 @@ Dashboard | NovaHR
                 </span>
 
                 <span class="metric-neutral">
-                    este mês
+                    {{ t('this_month') }}
                 </span>
 
             </div>
@@ -115,7 +115,7 @@ Dashboard | NovaHR
             </div>
 
             <p class="metric-label">
-                Usuários
+                {{ t('users') }}
             </p>
 
             <div class="metric-value">
@@ -129,7 +129,7 @@ Dashboard | NovaHR
                 </span>
 
                 <span class="metric-neutral">
-                    este mês
+                    {{ t('this_month') }}
                 </span>
 
             </div>
@@ -150,7 +150,7 @@ Dashboard | NovaHR
             </div>
 
             <p class="metric-label">
-                Funcionários Ativos
+                {{ t('active_employees') }}
             </p>
 
             <div class="metric-value">
@@ -164,7 +164,7 @@ Dashboard | NovaHR
                 </span>
 
                 <span class="metric-neutral">
-                    do total
+                    {{ t('of_total') }}
                 </span>
 
             </div>
@@ -190,11 +190,11 @@ Dashboard | NovaHR
             <div class="dashboard-panel-header">
 
                 <h2 class="dashboard-panel-title">
-                    Últimos funcionários
+                    {{ t('recent_employees') }}
                 </h2>
 
                 <a href="#" class="dashboard-panel-link">
-                    Ver todos →
+                    {{ t('view_all') }} →
                 </a>
 
             </div>
@@ -209,15 +209,15 @@ Dashboard | NovaHR
                         <tr>
 
                             <th>
-                                Funcionário
+                                {{ t('employee') }}
                             </th>
 
                             <th>
-                                Departamento
+                                {{ t('department') }}
                             </th>
 
                             <th>
-                                Cargo
+                                {{ t('position') }}
                             </th>
 
                             <th>
@@ -272,13 +272,13 @@ Dashboard | NovaHR
                                 {% if employee.is_active %}
 
                                     <span class="status-badge status-active">
-                                        Ativo
+                                        {{ t('active_status') }}
                                     </span>
 
                                 {% else %}
 
                                     <span class="status-badge status-inactive">
-                                        Inativo
+                                        {{ t('inactive_status') }}
                                     </span>
 
                                 {% endif %}
@@ -292,7 +292,7 @@ Dashboard | NovaHR
                         <tr>
 
                             <td colspan="4" class="text-center">
-                                Nenhum funcionário cadastrado.
+                                {{ t('no_employees') }}
                             </td>
 
                         </tr>
@@ -317,7 +317,7 @@ Dashboard | NovaHR
             <div class="dashboard-panel-header">
 
                 <h2 class="dashboard-panel-title">
-                    Atividade recente
+                    {{ t('recent_activity') }}
                 </h2>
 
             </div>

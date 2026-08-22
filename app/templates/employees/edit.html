@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 
 {% block title %}
-Editar Funcionário | NovaHR
+{{ t('edit_employee') }} | NovaHR
 {% endblock %}
 
 {% block content %}
@@ -11,10 +11,10 @@ Editar Funcionário | NovaHR
     <div class="d-flex justify-content-between align-items-center mb-4">
 
         <div>
-            <h1 class="h3 mb-1">Editar Funcionário</h1>
+            <h1 class="h3 mb-1">{{ t('edit_employee') }}</h1>
 
             <p class="text-muted mb-0">
-                Atualize as informações do funcionário.
+                {{ t('edit_employee_description') }}
             </p>
         </div>
 
@@ -23,7 +23,7 @@ Editar Funcionário | NovaHR
             class="btn btn-outline-secondary"
         >
             <i class="bi bi-arrow-left me-1"></i>
-            Voltar
+            {{ t('back') }}
         </a>
 
     </div>
@@ -46,7 +46,7 @@ Editar Funcionário | NovaHR
                             for="first_name"
                             class="form-label"
                         >
-                            First Name
+                            {{ t('first_name') }}
                         </label>
 
                         <input
@@ -67,7 +67,7 @@ Editar Funcionário | NovaHR
                             for="last_name"
                             class="form-label"
                         >
-                            Last Name
+                            {{ t('last_name') }}
                         </label>
 
                         <input
@@ -88,7 +88,7 @@ Editar Funcionário | NovaHR
                             for="email"
                             class="form-label"
                         >
-                            Email
+                            {{ t('email') }}
                         </label>
 
                         <input
@@ -109,7 +109,7 @@ Editar Funcionário | NovaHR
                             for="phone"
                             class="form-label"
                         >
-                            Phone
+                            {{ t('phone') }}
                         </label>
 
                         <input
@@ -129,7 +129,7 @@ Editar Funcionário | NovaHR
                             for="position"
                             class="form-label"
                         >
-                            Position
+                            {{ t('position') }}
                         </label>
 
                         <input
@@ -150,7 +150,7 @@ Editar Funcionário | NovaHR
                             for="department_id"
                             class="form-label"
                         >
-                            Department
+                            {{ t('department') }}
                         </label>
 
                         <select
@@ -161,7 +161,7 @@ Editar Funcionário | NovaHR
                         >
 
                             <option value="">
-                                Select department
+                                {{ t('select_department') }}
                             </option>
 
                             {% for department in departments %}
@@ -186,7 +186,7 @@ Editar Funcionário | NovaHR
                             for="hire_date"
                             class="form-label"
                         >
-                            Hire Date
+                            {{ t('hire_date') }}
                         </label>
 
                         <input
@@ -207,7 +207,7 @@ Editar Funcionário | NovaHR
                             for="salary"
                             class="form-label"
                         >
-                            Salary
+                            {{ t('salary') }}
                         </label>
 
                         <input
@@ -224,14 +224,14 @@ Editar Funcionário | NovaHR
 
                 </div>
 
-                <!-- Status -->
+                <!-- {{ t('status') }} -->
                 <div class="col-md-6">
 
                     <label
                         for="is_active"
                         class="form-label"
                     >
-                        Status
+                        {{ t('status') }}
                     </label>
 
                     <select
@@ -245,14 +245,14 @@ Editar Funcionário | NovaHR
                             value="1"
                             {% if employee.is_active %}selected{% endif %}
                         >
-                            Active
+                            {{ t('active') }}
                         </option>
 
                         <option
                             value="0"
                             {% if not employee.is_active %}selected{% endif %}
                         >
-                            Inactive
+                            {{ t('inactive') }}
                         </option>
 
                     </select>
@@ -267,7 +267,7 @@ Editar Funcionário | NovaHR
                         href="{{ url_for('employees.employee_details', employee_id=employee.id) }}"
                         class="btn btn-outline-secondary"
                     >
-                        Cancel
+                        {{ t('cancel') }}
                     </a>
 
                     <button
@@ -275,7 +275,7 @@ Editar Funcionário | NovaHR
                         class="btn btn-primary"
                     >
                         <i class="bi bi-check-lg me-1"></i>
-                        Save Changes
+                        {{ t('save_changes') }}
                     </button>
 
                 </div>

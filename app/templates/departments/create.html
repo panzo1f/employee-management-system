@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 
 {% block title %}
-Novo Departamento | NovaHR
+{{ t('new_department') }} | NovaHR
 {% endblock %}
 
 {% block extra_css %}
@@ -19,11 +19,11 @@ Novo Departamento | NovaHR
 
         <div>
             <h1 class="department-title">
-                Novo Departamento
+                {{ t('new_department') }}
             </h1>
 
             <p class="department-subtitle">
-                Cadastre um novo departamento na organização.
+                {{ t('new_department_description') }}
             </p>
         </div>
 
@@ -32,7 +32,7 @@ Novo Departamento | NovaHR
             class="btn btn-outline-secondary"
         >
             <i class="bi bi-arrow-left me-1"></i>
-            Voltar
+            {{ t('back') }}
         </a>
 
     </div>
@@ -76,11 +76,11 @@ Novo Departamento | NovaHR
 
             <div>
                 <h2 class="department-card-title">
-                    Informações do departamento
+                    {{ t('department_information') }}
                 </h2>
 
                 <p class="department-card-description">
-                    Preencha os dados abaixo para criar o departamento.
+                    {{ t('create_department_description') }}
                 </p>
             </div>
 
@@ -97,7 +97,7 @@ Novo Departamento | NovaHR
                         for="name"
                         class="form-label"
                     >
-                        Nome do departamento
+                        {{ t('department_name') }}
                     </label>
 
                     <input
@@ -106,7 +106,7 @@ Novo Departamento | NovaHR
                         id="name"
                         name="name"
                         value="{{ name or '' }}"
-                        placeholder="Ex.: Recursos Humanos"
+                        placeholder="{{ t('department_placeholder') }}"
                         required
                         autofocus
                     >
@@ -120,7 +120,7 @@ Novo Departamento | NovaHR
                         for="description"
                         class="form-label"
                     >
-                        Descrição
+                        {{ t('description') }}
                     </label>
 
                     <textarea
@@ -128,7 +128,7 @@ Novo Departamento | NovaHR
                         id="description"
                         name="description"
                         rows="5"
-                        placeholder="Descreva a função deste departamento..."
+                        placeholder="{{ t('description_placeholder') }}"
                     >{{ description or '' }}</textarea>
 
                 </div>
@@ -140,7 +140,7 @@ Novo Departamento | NovaHR
                         href="{{ url_for('departments.list_departments') }}"
                         class="btn btn-light"
                     >
-                        Cancelar
+                        {{ t('cancel') }}
                     </a>
 
                     <button
@@ -148,7 +148,7 @@ Novo Departamento | NovaHR
                         class="btn btn-primary"
                     >
                         <i class="bi bi-check-lg me-1"></i>
-                        Criar Departamento
+                        {{ t('create_department') }}
                     </button>
 
                 </div>

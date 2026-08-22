@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 
 {% block title %}
-Editar Departamento | NovaHR
+{{ t('edit_department') }} | NovaHR
 {% endblock %}
 
 {% block extra_css %}
@@ -20,11 +20,11 @@ Editar Departamento | NovaHR
         <div>
 
             <h1 class="department-title">
-                Editar Departamento
+                {{ t('edit_department') }}
             </h1>
 
             <p class="department-subtitle">
-                Atualize as informações do departamento.
+                {{ t('edit_department_description') }}
             </p>
 
         </div>
@@ -34,7 +34,7 @@ Editar Departamento | NovaHR
             class="btn btn-outline-secondary"
         >
             <i class="bi bi-arrow-left me-1"></i>
-            Voltar
+            {{ t('back') }}
         </a>
 
     </div>
@@ -88,11 +88,11 @@ Editar Departamento | NovaHR
             <div>
 
                 <h2 class="department-card-title">
-                    Informações do departamento
+                    {{ t('department_information') }}
                 </h2>
 
                 <p class="department-card-description">
-                    Altere os dados abaixo para atualizar o departamento.
+                    {{ t('update_department_description') }}
                 </p>
 
             </div>
@@ -110,7 +110,7 @@ Editar Departamento | NovaHR
                         for="name"
                         class="form-label"
                     >
-                        Nome do departamento
+                        {{ t('department_name') }}
                     </label>
 
                     <input
@@ -119,7 +119,7 @@ Editar Departamento | NovaHR
                         id="name"
                         name="name"
                         value="{{ department.name }}"
-                        placeholder="Ex.: Recursos Humanos"
+                        placeholder="{{ t('department_placeholder') }}"
                         required
                         autofocus
                     >
@@ -133,7 +133,7 @@ Editar Departamento | NovaHR
                         for="description"
                         class="form-label"
                     >
-                        Descrição
+                        {{ t('description') }}
                     </label>
 
                     <textarea
@@ -141,7 +141,7 @@ Editar Departamento | NovaHR
                         id="description"
                         name="description"
                         rows="5"
-                        placeholder="Descreva a função deste departamento..."
+                        placeholder="{{ t('description_placeholder') }}"
                     >{{ department.description or '' }}</textarea>
 
                 </div>
@@ -153,7 +153,7 @@ Editar Departamento | NovaHR
                         href="{{ url_for('departments.list_departments') }}"
                         class="btn btn-light"
                     >
-                        Cancelar
+                        {{ t('cancel') }}
                     </a>
 
                     <button
@@ -161,7 +161,7 @@ Editar Departamento | NovaHR
                         class="btn btn-primary"
                     >
                         <i class="bi bi-check-lg me-1"></i>
-                        Guardar Alterações
+                        {{ t('save_changes') }}
                     </button>
 
                 </div>

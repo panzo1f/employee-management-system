@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 
 {% block title %}
-Novo Funcionário | NovaHR
+{{ t('new_employee') }} | NovaHR
 {% endblock %}
 
 {% block content %}
@@ -11,10 +11,10 @@ Novo Funcionário | NovaHR
     <div class="d-flex justify-content-between align-items-center mb-4">
 
         <div>
-            <h1 class="h3 mb-1">Novo Funcionário</h1>
+            <h1 class="h3 mb-1">{{ t('new_employee') }}</h1>
 
             <p class="text-muted mb-0">
-                Cadastre um novo funcionário na organização.
+                {{ t('new_employee_description') }}
             </p>
         </div>
 
@@ -23,7 +23,7 @@ Novo Funcionário | NovaHR
             class="btn btn-outline-secondary"
         >
             <i class="bi bi-arrow-left me-1"></i>
-            Voltar
+            {{ t('back') }}
         </a>
 
     </div>
@@ -44,7 +44,7 @@ Novo Funcionário | NovaHR
                         type="button"
                         class="btn-close"
                         data-bs-dismiss="alert"
-                        aria-label="Fechar"
+                        aria-label="{{ t('close') }}"
                     ></button>
                 </div>
 
@@ -59,11 +59,11 @@ Novo Funcionário | NovaHR
         <div class="card-header">
 
             <h2 class="h5 mb-1">
-                Informações do funcionário
+                {{ t('employee_information') }}
             </h2>
 
             <p class="text-muted mb-0">
-                Preencha os dados abaixo para cadastrar o funcionário.
+                {{ t('create_employee_description') }}
             </p>
 
         </div>
@@ -80,7 +80,7 @@ Novo Funcionário | NovaHR
                             for="first_name"
                             class="form-label"
                         >
-                            Nome
+                            {{ t('first_name') }}
                         </label>
 
                         <input
@@ -101,7 +101,7 @@ Novo Funcionário | NovaHR
                             for="last_name"
                             class="form-label"
                         >
-                            Apelido
+                            {{ t('last_name') }}
                         </label>
 
                         <input
@@ -125,7 +125,7 @@ Novo Funcionário | NovaHR
                             for="email"
                             class="form-label"
                         >
-                            Email
+                            {{ t('email') }}
                         </label>
 
                         <input
@@ -145,7 +145,7 @@ Novo Funcionário | NovaHR
                             for="phone"
                             class="form-label"
                         >
-                            Telefone
+                            {{ t('phone') }}
                         </label>
 
                         <input
@@ -168,7 +168,7 @@ Novo Funcionário | NovaHR
                             for="position"
                             class="form-label"
                         >
-                            Cargo
+                            {{ t('position') }}
                         </label>
 
                         <input
@@ -188,7 +188,7 @@ Novo Funcionário | NovaHR
                             for="department_id"
                             class="form-label"
                         >
-                            Departamento
+                            {{ t('department') }}
                         </label>
 
                         <select
@@ -199,7 +199,7 @@ Novo Funcionário | NovaHR
                         >
 
                             <option value="">
-                                Selecione um departamento
+                                {{ t('select_a_department') }}
                             </option>
 
                             {% for department in departments %}
@@ -227,7 +227,7 @@ Novo Funcionário | NovaHR
                             for="hire_date"
                             class="form-label"
                         >
-                            Data de contratação
+                            {{ t('hire_date') }}
                         </label>
 
                         <input
@@ -247,7 +247,7 @@ Novo Funcionário | NovaHR
                             for="salary"
                             class="form-label"
                         >
-                            Salário
+                            {{ t('salary') }}
                         </label>
 
                         <input
@@ -270,7 +270,7 @@ Novo Funcionário | NovaHR
                         href="{{ url_for('employees.list_employees') }}"
                         class="btn btn-light"
                     >
-                        Cancelar
+                        {{ t('cancel') }}
                     </a>
 
                     <button

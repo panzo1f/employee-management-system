@@ -27,3 +27,59 @@
 
     --transition: 0.2s ease;
 }
+
+
+/* ============================= */
+/* DARK THEME                    */
+/* ============================= */
+
+[data-theme="dark"] {
+    --primary-color: #3b82f6;
+    --primary-hover: #60a5fa;
+
+    --sidebar-bg: #020617;
+    --sidebar-hover: #1e293b;
+
+    --navbar-bg: #0f172a;
+
+    --background-color: #020617;
+    --card-bg: #0f172a;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-light: #94a3b8;
+
+    --border-color: #334155;
+}
+
+
+/* ============================= */
+/* BOOTSTRAP THEME VARIABLES     */
+/* ============================= */
+
+[data-theme="dark"] {
+    --bs-body-bg: var(--background-color);
+    --bs-body-color: var(--text-primary);
+
+    --bs-secondary-color: var(--text-secondary);
+    --bs-tertiary-color: var(--text-light);
+
+    --bs-border-color: var(--border-color);
+
+    --bs-card-bg: var(--card-bg);
+    --bs-card-color: var(--text-primary);
+
+    --bs-heading-color: var(--text-primary);
+
+    --bs-form-control-bg: var(--card-bg);
+    --bs-form-control-color: var(--text-primary);
+
+    --bs-table-bg: var(--card-bg);
+    --bs-table-color: var(--text-primary);
+
+    --bs-dropdown-bg: var(--card-bg);
+    --bs-dropdown-color: var(--text-primary);
+
+    --bs-modal-bg: var(--card-bg);
+    --bs-modal-color: var(--text-primary);
+}

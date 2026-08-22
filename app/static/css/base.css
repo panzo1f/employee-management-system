@@ -32,3 +32,219 @@ button {
     padding: 30px 40px;
 }
 
+
+
+/* ============================= */
+/* THEME SUPPORT                 */
+/* ============================= */
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    transition:
+        background-color var(--transition),
+        color var(--transition);
+}
+
+
+.card {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+
+.text-muted {
+    color: var(--text-secondary) !important;
+}
+
+
+.form-control,
+.form-select {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+}
+
+
+.table {
+    color: var(--text-primary);
+}
+
+
+[data-theme="dark"] .table {
+    --bs-table-bg: var(--card-bg);
+    --bs-table-color: var(--text-primary);
+    --bs-table-border-color: var(--border-color);
+}
+
+
+/* ============================= */
+/* GLOBAL THEME COMPONENTS       */
+/* ============================= */
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    transition:
+        background-color var(--transition),
+        color var(--transition);
+}
+
+
+.main-content {
+    background-color: var(--background-color);
+    color: var(--text-primary);
+}
+
+
+/* Cards */
+
+.card {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+
+/* Text */
+
+.text-muted {
+    color: var(--text-secondary) !important;
+}
+
+
+.text-dark {
+    color: var(--text-primary) !important;
+}
+
+
+/* Forms */
+
+.form-control,
+.form-select,
+.input-group-text {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+
+.form-control::placeholder {
+    color: var(--text-secondary);
+}
+
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--primary-color);
+}
+
+
+/* Tables */
+
+.table {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+
+[data-theme="dark"] .table {
+    --bs-table-bg: var(--card-bg);
+    --bs-table-color: var(--text-primary);
+    --bs-table-border-color: var(--border-color);
+    --bs-table-hover-bg: var(--sidebar-hover);
+    --bs-table-hover-color: var(--text-primary);
+}
+
+
+/* Dropdowns */
+
+.dropdown-menu {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+
+.dropdown-item {
+    color: var(--text-primary);
+}
+
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: var(--sidebar-hover);
+    color: var(--text-primary);
+}
+
+
+/* Modals */
+
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+
+/* Alerts */
+
+[data-theme="dark"] .alert {
+    border-color: var(--border-color);
+}
+
+
+/* Borders */
+
+.border,
+.border-top,
+.border-end,
+.border-bottom,
+.border-start {
+    border-color: var(--border-color) !important;
+}
+
+
+/* Horizontal rules */
+
+hr {
+    border-color: var(--border-color);
+}
+
+
+/* Links */
+
+[data-theme="dark"] a:not(.btn):not(.nav-link) {
+    color: #93c5fd;
+}
+
+
+/* Bootstrap pagination */
+
+[data-theme="dark"] .page-link {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+
+[data-theme="dark"] .page-link:hover {
+    background-color: var(--sidebar-hover);
+    color: var(--text-primary);
+}
+
+
+/* Bootstrap close button */
+
+[data-theme="dark"] .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}

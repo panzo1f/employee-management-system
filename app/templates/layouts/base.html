@@ -83,7 +83,9 @@
 </head>
 
 
-<body>
+<body
+    data-theme="{% if user_preferences %}{{ user_preferences.theme }}{% else %}light{% endif %}"
+>
 
     {% include 'components/sidebar.html' %}
 
