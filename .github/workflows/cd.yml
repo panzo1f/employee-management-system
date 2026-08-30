@@ -14,6 +14,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Test SSH connectivity
+        run: |
+          echo "Testing SSH connectivity..."
+          echo "Host: ${{ secrets.DEPLOY_HOST }}"
+          echo "Port: ${{ secrets.DEPLOY_PORT }}"
+          timeout 15 bash -c "</dev/tcp/${{ secrets.DEPLOY_HOST }}/${{ secrets.DEPLOY_PORT }}"
+          echo "TCP connection successful"
+
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.2.2
         with:
@@ -36,4 +44,4 @@ jobs:
             docker compose up -d
 
             echo "Checking services..."
-            docker compose ps
+            docker compose ps 
