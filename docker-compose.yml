@@ -1,5 +1,29 @@
 services:
 
+  traefik:
+    image: traefik:v3.6.16
+    container_name: novahr-traefik
+
+    restart: unless-stopped
+
+    command:
+      - --api.dashboard=true
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+
+    ports:
+      - "80:80"
+      - "8080:8080"
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+    networks:
+      - novahr_network
+
+
   postgres:
     image: postgres:16
     container_name: novahr-postgres
@@ -11,11 +35,12 @@ services:
       POSTGRES_USER: novahr
       POSTGRES_PASSWORD: novahr_password
 
-    ports:
-      - "5432:5432"
-
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+    networks:
+      - novahr_network
+
 
   novahr:
     image: novahr:latest
@@ -30,12 +55,24 @@ services:
       SECRET_KEY: minha-chave-secreta
       DATABASE_URL: postgresql+psycopg://novahr:novahr_password@postgres:5432/novahr
 
-    ports:
-      - "5000:5000"
-
     command: flask --app run.py run --host=0.0.0.0 --port=5000
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.novahr.rule=Host(`novahr.local`)"
+      - "traefik.http.routers.novahr.entrypoints=web"
+      - "traefik.http.services.novahr.loadbalancer.server.port=5000"
+
+    networks:
+      - novahr_network
 
 
 volumes:
 
   postgres_data:
+
+
+networks:
+
+  novahr_network:
+    driver: bridge
