@@ -25,11 +25,12 @@ def create_user():
     if request.method == "POST":
         name = request.form.get("name", "").strip()
         email = request.form.get("email", "").strip()
+        password = request.form.get("password", "")
+        confirm_password = request.form.get("confirm_password", "")
         is_active = request.form.get("is_active") == "on"
 
         if not name:
             flash("User name is required.", "error")
-
             return render_template(
                 "users/create.html",
                 name=name,
@@ -39,7 +40,33 @@ def create_user():
 
         if not email:
             flash("User email is required.", "error")
+            return render_template(
+                "users/create.html",
+                name=name,
+                email=email,
+                is_active=is_active,
+            )
 
+        if not password:
+            flash("Password is required.", "error")
+            return render_template(
+                "users/create.html",
+                name=name,
+                email=email,
+                is_active=is_active,
+            )
+
+        if len(password) < 8:
+            flash("Password must be at least 8 characters.", "error")
+            return render_template(
+                "users/create.html",
+                name=name,
+                email=email,
+                is_active=is_active,
+            )
+
+        if password != confirm_password:
+            flash("Passwords do not match.", "error")
             return render_template(
                 "users/create.html",
                 name=name,
@@ -50,6 +77,7 @@ def create_user():
         UserService.create(
             name=name,
             email=email,
+            password=password,
             is_active=is_active,
         )
 

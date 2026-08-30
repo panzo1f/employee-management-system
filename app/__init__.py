@@ -28,6 +28,11 @@ def create_app():
         if not users:
             return {
                 "user_preferences": None,
+                "language": "pt",
+                "t": lambda key: TranslationService.translate(
+                    key,
+                    "pt",
+                ),
             }
 
         preferences = UserPreferenceService.get_or_create(
