@@ -3,7 +3,6 @@ services:
   traefik:
     image: traefik:v3.6.16
     container_name: novahr-traefik
-
     restart: unless-stopped
 
     command:
@@ -27,7 +26,6 @@ services:
   postgres:
     image: postgres:16
     container_name: novahr-postgres
-
     restart: unless-stopped
 
     environment:
@@ -45,7 +43,6 @@ services:
   novahr:
     image: novahr:latest
     container_name: novahr-app
-
     restart: unless-stopped
 
     depends_on:
@@ -68,11 +65,9 @@ services:
 
 
 volumes:
-
   postgres_data:
 
 
 networks:
-
   novahr_network:
     driver: bridge
