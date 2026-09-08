@@ -58,7 +58,7 @@ pipeline {
             }
         }
     }
-
+#end of stages
     post {
         always {
             junit(
