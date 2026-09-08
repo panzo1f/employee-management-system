@@ -1,0 +1,30 @@
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: novahr-jenkins:latest
+    container_name: novahr-jenkins
+
+    restart: unless-stopped
+
+    volumes:
+      - jenkins_home:/var/jenkins_home
+
+    networks:
+      - novahr_network
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=employee-management-system_novahr_network"
+      - "traefik.http.routers.jenkins.rule=Host(`jenkins.local`)"
+      - "traefik.http.routers.jenkins.entrypoints=web"
+      - "traefik.http.services.jenkins.loadbalancer.server.port=8080"
+
+networks:
+  novahr_network:
+    external: true
+    name: employee-management-system_novahr_network
+
+volumes:
+  jenkins_home:
