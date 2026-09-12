@@ -8,8 +8,9 @@ on:
   pull_request:
     branches:
       - main
-#  workflow_dispatch:
+
 jobs:
+
   test:
     name: Test & Validate
     runs-on: self-hosted
@@ -35,6 +36,7 @@ jobs:
       FLASK_APP: run.py
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -58,12 +60,24 @@ jobs:
         run: |
           pytest -q
 
+      - name: SonarQube Analysis
+        uses: SonarSource/sonarqube-scan-action@v6
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: http://sonarqube.local
+        with:
+          args: >
+            -Dsonar.projectKey=novahr
+            -Dsonar.projectName=NovaHR
+            -Dsonar.qualitygate.wait=true
+
   docker:
     name: Docker Build & Push
     runs-on: ubuntu-latest
     needs: test
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
