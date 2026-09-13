@@ -95,6 +95,8 @@ jobs:
         with:
           context: .
           push: true
-          tags: zuapanzo/novahr:latest
+          tags: |
+            zuapanzo/novahr:latest
+            zuapanzo/novahr:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
